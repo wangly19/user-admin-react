@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Style from './index.less';
 
-import { SmileTwoTone } from '@ant-design/icons';
-import { Hexagonal } from '@icon-park/react';
+import { Row, Col } from 'antd'
+import MenuView from '../MenuView'
+import { CodeSandboxOutlined } from '@ant-design/icons'
 
-export default function LayoutToolBars() {
+const LayoutToolBars: FC<{
+}> = (props) => {
   return (
-    <div className={Style.layoutHeader}>
-      <div className={Style.logo}>
-        <SmileTwoTone />
-        <Hexagonal
-          theme="multi-color"
-          size="24"
-          fill={['#333', '#2F88FF', '#FFF', '#43CCF8']}
+    <Row 
+      className={ Style.layoutHeader } 
+      justify="center" 
+      align="middle"
+    >
+      
+      <Col span={ 2 }>
+        <CodeSandboxOutlined 
+          className={ Style.icon }
         />
-      </div>
-    </div>
+      </Col>
+      <Col span={ 19 }>
+        <MenuView/>
+      </Col>
+      <Col span={ 3 }>
+      </Col>
+    </Row>
   );
 }
+
+export default LayoutToolBars
