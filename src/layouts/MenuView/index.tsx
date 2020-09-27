@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import { IConfig, useModel } from 'umi';
+import { useRouteMatch, useModel } from 'umi';
 
-import { Menu, Dropdown } from 'antd';
+import { Menu, Dropdown, Button } from 'antd';
 const { SubMenu } = Menu;
 
 import router, { IRouterConfig } from '@/config/defineRoutes';
 import { DownOutlined } from '@ant-design/icons';
 import Style from './index.less';
 
-const MenuView: FC<{}> = () => {
+const MenuView: FC<any> = () => {
   const { initialState } = useModel('@@initialState');
   const { newRoutes } = initialState;
   console.log(newRoutes)
@@ -48,22 +48,21 @@ const MenuView: FC<{}> = () => {
                 return routerSubMenu(router.routes || []);
               }}
             >
-              <a
-                className="ant-dropdown-link"
-                onClick={e => e.preventDefault()}
+              <Button
+                type="text"
+                style={{ color: useRouteMatch().path === router.path ? '#40a9ff' : '#FFF' }}
               >
-                {router.title}
-              </a>
+                {router.title} <DownOutlined />
+              </Button>
             </Dropdown>
           ) : (
-            <a
+            <Button
+              type="text"
               key={ router.path }
-              className="ant-dropdown-link" 
-              onClick={e => e.preventDefault()}
+              style={{ color: '#FFF' }}
             >
               {router.title}
-              { JSON.stringify(router.routes) }
-            </a>
+            </Button>
           );
         }
       })}

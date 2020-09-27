@@ -12,24 +12,9 @@ export default () => {
   return (
     <Row>
       <Col span={24}>
-        <Card
-          type="inner"
-          title="Inner Card title"
-          extra={<a href="#">More</a>}
-        >
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-          <StaticLine/>
-        </Card>
+          <Card hoverable={ true }>
+            <StaticLine/>
+          </Card>
       </Col>
     </Row>
   )
